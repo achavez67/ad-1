@@ -17,41 +17,33 @@ This tutorial outlines the setup process of virtual machines created in Azure an
 
 - Windows 10</b> (21H2)
 
-<h2>List of Prerequisites</h2>
 
-- IIS
-- PHP Manager
-- URL Rewrite for IIS
-- C++ Redistributable x86
-- MySql
-- HeidiSQL
+<h2>Virtual Machines Creation Steps</h2>
 
-<h2>Installation Steps</h2>
-
-For this project, I created a virtual machine via Microsoft Azure using Windows 10 as the operating system. There are a handful of requirements to install in order for osTicket to function properly.
+For this project, I created two virtual machines. One will be the client, and the other one will be the domain controller.
 
 <p>
-<img src="https://i.imgur.com/mdu44fs.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/j0QOhKa.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Before we install osTicket, we must install and enable IIS in windows with CGI. We can achieve this by going to the windows search bar and type "Control Panel". Then we will go to Programs->Programs and Features->Turn Windows features on or off. We will find IIS and enable it, expand it, expand Application Development Features, and enable CGI. 
+Our domain controller(DC-1) will have a Windows Server OS. After creating a username and password, we can click on "create" and the virtual machine will automatically create a virtual network. 
 
 </p>
 <br />
 <p>
-<img src="https://i.imgur.com/rkHcmpx.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/KygT9cP.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/jcBLuiu.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-We must download the files in the image above and listed on the "prerequisites". We follow the instructions of each file to install the programs succesfully.
+Our Client-1 machine will have a Windows 10 OS, and we will put it in the same virtual network that our DC-1 is in.
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/nuzTgBv.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/B5skk2O.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-After installing MySQL, we will open IIS as an admin->Register PHP from within IIS. 
-When doing anything with IIS, it is recommended that we click on restart so that we can see the changes.
+We will then set DC-1's NIC's private IP address to be static. We can do this by going to our DC-1 virtual machine in Azure->Networking->Click on the Network Interface->IP Configurations->Click on the line where it has the Private IP address(dynamic)->switch assignment from "dynamic" to "static".
 </p>
 <br />
 
