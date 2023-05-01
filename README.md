@@ -48,10 +48,10 @@ We will then set DC-1's NIC's private IP address to be static. We can do this by
 <br />
 
 <p>
-<img src="https://i.imgur.com/oH3HGIg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/QKGv7oZ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Once we install osTicket, we will have an osTicket zip folder in the downloads. We will click on this folder and see that there is an "upload" folder. We will drag this "upload" folder into C:\inetpub\wwwroot. Then we will rename the "upload" folder to "osTicket". 
+Next, we will remote connect to both DC-1 and Client-1 virtual machines. We are going to ensure connectivity between the two machines using the "ping" command in the command line. We will get DC-1's private IP address from Azure, and type "ping -t [DC-1's private IP address] on Client-1's command line. We should get a perpetual response "requeset timed out". We will go to DC-1's machine and enable ICMPv4 on the local Widnows firewall. We can do this by going to Windows Defender Firewall with Advanced Security->Inbound Rules->*Enable* both rules that are named "Core Networking Diagnostics - ICMP Echo Request (ICMPv4-in)". We will go back to Client-1's machine to check the connectivity in the command line, and it should look like the image above.
 </p>
 <br />
 
