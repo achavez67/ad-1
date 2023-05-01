@@ -54,38 +54,3 @@ We will then set DC-1's NIC's private IP address to be static. We can do this by
 Next, we will remote connect to both DC-1 and Client-1 virtual machines. We are going to ensure connectivity between the two machines using the "ping" command in the command line. We will get DC-1's private IP address from Azure, and type "ping -t [DC-1's private IP address] on Client-1's command line. We should get a perpetual response "requeset timed out". We will go to DC-1's machine and enable ICMPv4 on the local Widnows firewall. We can do this by going to Windows Defender Firewall with Advanced Security->Inbound Rules->*Enable* both rules that are named "Core Networking Diagnostics - ICMP Echo Request (ICMPv4-in)". We will go back to Client-1's machine to check the connectivity in the command line, and it should look like the image above.
 </p>
 <br />
-
-<p>
-<img src="https://i.imgur.com/cr7GiAU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-We will go back to IIS, click on the server, and restart again. We then will go to Sites->Defualt Web Site->osTicket and then click on Browse *:80 (http) on the right side of the directory. This will allow us to successfully access osTicket in the browser, but we will need to enable some features for improvements.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/tdQvN9E.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-To enable these feautres, we will go back to IIS and go to [our server]->Sites->Default Web Site->osTicket->PHP Manager->Enable or Disable and extension. We will enable: php_imap.dll, php_intl.dll, php_opcache.dll
-
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/gp4Ra40.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-We are going to locate C:\inetpub\wwwroot\osTicket\include\ost-sampleconfig.php and rename it to C:\inetpub\wwwroot\osTicket\include\ost-config.php. We then will assign permissions to this file, First we will disable inheritence by right clicking on the file->properties->security->advanced->disable inheritance->remove all inherited permissions from this object. Then we will add permissions by going to select principle and type "everyone" under "Enter the object name to select". Check names, and then check the box that says "Full Control" click on "apply" and then "ok".
-
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/3rDmgsH.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-We will continue to setting up osTicket by putting in the information that we are being asked. Before clicking "install now" we will go to HeidiSQL and create a new database called "osTicket". We will type the name of this database where it says "mySQL Database" on the browser.  We have successfully accessed osTicket, now we will delete C:\inetpub\wwwroot\osTicket\setup and then we will set permissions to "read" only on C:\inetpub\wwwroot\osTicket\include\ost-config.php.
-
-</p>
-<br />
